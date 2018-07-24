@@ -1,26 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router'
 import './App.css';
 import axios from 'axios';
+import Welcome from './components/Welcome'
+import Nav from './components/Nav'
 
 class App extends Component {
+
+  state = {}
+
   componentDidMount() {
-    axios.get('/hello').then(res => {
-      console.log(res.data);
+    axios
+      .get('/locations')
+      .then(res => {
+        if (res.status === 200) {
+          const locations = res.data.payload
+          this.setState({ locations })
+        }
     })
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <div className="wrapper">
+         <Nav />
+          <Switch>
+            <Route exact path="/" component={Welcome} />
+          </Switch>
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

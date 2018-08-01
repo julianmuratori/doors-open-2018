@@ -23,6 +23,9 @@
 .menuBar:hover {
     cursor: pointer;
 }
+.menuBar:hover .menuBar__center h3 {
+    transform: skewX(13deg);
+}
 
 .menuBar:hover > .menuBar__left > .menuBar__left--burger:before {
     /* transform: translate3d(0, -2px, 0); */
@@ -64,27 +67,40 @@
 }
 
 /* DROPDOWN MENU STYLING */
-.menu {
-    background-color: #fe0000;    
-    /* position: relative; */
-}
 .menu__container {
-    background-color: #fe0000;    
+    padding: 0;
     width: 100%;
-    padding: 0 17px 0px;
-    /* min-height: 200px; */
     list-style: none;
     margin: 0;
 }
-.menu__link:first-of-type {
+.menu__link {
+    text-align: center;
+}
+.menu__link a {
+    transition: all .3s ease;
+    background-color: #fe0000;    
+    display: block;
+    width: 100%;
+    border-bottom: 3px solid white;
+    padding: 5px 0;
+    color: white;
+    text-transform: uppercase;
+}
+.menu__link a:hover {
+    background-color: rgba(0,0,0,0);
+    color: black;
+}
+.menu__link:nth-child(odd) a:hover h3 {
+    transform: skewX(-13deg);
+}
+.menu__link:nth-child(even) a:hover h3{
+    transform: skewX(13deg);
+}
+.menu__link:first-of-type a {
     border-top: 3px solid white;
 }
 
-.menu__link {
-    text-align: center;
-    border-bottom: 3px solid white;
-    padding: 5px 0;
-}
-.menu__link a {
-    color: white;
+.menu__link:last-of-type a {
+    border-bottom: none;
+    padding-bottom: 10px;
 }

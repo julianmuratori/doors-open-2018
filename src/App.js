@@ -22,18 +22,17 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <BrowserRouter>
+    return <BrowserRouter>
         <div className="App">
           <div className="wrapper">
-         <Nav />
-          <Switch>
-            <Route exact path="/" component={Welcome} />
-          </Switch>
+            <Nav />
+            <Switch>
+              <Route exact path="/" component={Welcome} />
+              <Route exact path="/Login" component={Welcome} />
+            </Switch>
           </div>
         </div>
-      </BrowserRouter>
-    );
+      </BrowserRouter>;
   }
 }
 

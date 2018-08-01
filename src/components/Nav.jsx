@@ -4,7 +4,7 @@ import './css/Nav.css'
 class Nav extends Component {
     state = {
         isActive: false,
-        menuOptions: ['LOGIN', 'SEARCH', 'DISCOVER']
+        menuOptions: ['Home','Login', 'Search', 'Discover']
     }
 
     handleClick = () => {
@@ -16,7 +16,7 @@ class Nav extends Component {
         const { menuOptions } = this.state
         return (
             <div className="menu__link">
-                <a href="#">
+                <a href={i}>
                     <h3>{i}</h3>
                 </a>
             </div>

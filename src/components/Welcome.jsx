@@ -6,13 +6,8 @@ const Welcome = () => {
         width: '100%',
         height: '100%',
         display: 'flex',
-        'flex-direction': 'column',
-        'justify-content': 'flex-start',
-        backgroundImage: `url(${Background})`,
-        'background-size': 'cover',
-        'background-repeat': 'no-repeat',
-        'background-position': 'top center'
-        
+        flexDirection: 'column',
+        justifyContent: 'flex-start'
     }
     const inner = {
         paddingLeft: '25px',

@@ -19,6 +19,11 @@ h3 {
   font-size: 2.4rem;
 }
 
+:root {
+  --main-red: #fe0000;
+  --main-white: rgba(245,245,245, 1);
+}
+
 
 @media screen and (min-width: 1440px) {
   h1 {
@@ -33,7 +38,7 @@ p {
 .App {
   font-family: 'Hind Siliguri', sans-serif;
   height: 100vh;
-  background-color: #fe0000;
+  background-color: var(--main-red);
   padding-bottom: 25px;
 }
 
@@ -42,4 +47,30 @@ p {
   max-width: 1600px;
   margin: 0 auto;
   height: 100%;
+  background-image: url('./assets/images/rcharris-ds.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;  
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* LOGIN SCREEN */
+
+.login__container {
+    padding: 20px 40px;
+    background-color: var(--main-white);
+    
+}
+
+.button {
+  padding: 1.5rem;
+  width: 100%;
 }

@@ -1,50 +1,71 @@
 import React,{ Component } from 'react'
-import Typography from '@material-ui/core/Typography'
-// import RaisedButton from 'material-ui/RaisedButton'
-
-import Card from 'material-ui/Card'
-// import Typography from 'material-ui/styles/typography'
-import TextField from 'material-ui/TextField'
 import '../App.css'
+import LoginForm from './LoginForm'
+import RegisterForm from './RegisterForm'
+import axios from 'axios'
 
 class Login extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    email: "",
+    register: false
   };
+
+  // Sets input fields to state
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleClick = e => {
-      const userpass = this.state
+  // Makes a post request to server
+
+  newUser = e => {
       e.preventDefault();
-      console.log(userpass)
+      const { username, password, email } = this.state
+
+      axios.post('/register', {
+        username,
+        email, 
+        password
+      })
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res)
+        }
+      }).catch(err => {
+        console.log(err)
+      })
   }
-  
+
+  // Toggles the form between login and registration
+
+  changeForm = e => {
+    e.preventDefault()
+    const { register } = this.state
+    this.setState({ register: !register })
+  }
+
   render() {
+    const { register } = this.state
 
     return (
       <div className="container">
-        <form className="login__container">
-          <p>Enter your details to login</p>
-          <TextField
-            hintText="Enter Your Username"
-            floatingLabelText="Username"
-            name="username"
-            onChange={this.handleChange}
-          />
-          <br/>
-          <TextField
-            hintText="Enter Your Password"
-            floatingLabelText="Password"
-            name="password"
-            onChange={this.handleChange}
-          />
-          <br/>
-            <button type="submit" className="button">Sign In</button>
-        </form>
+        {
+          register ? (
+            <RegisterForm 
+              changeForm={this.changeForm}
+              handleChange={this.handleChange}
+              newUser={this.newUser}
+              />
+          ) : (
+            <LoginForm 
+              changeForm={this.changeForm}
+              handleChange={this.handleChange}
+              />
+          ) 
+        }
+        
         </div>
     );
   }

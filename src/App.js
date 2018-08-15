@@ -10,7 +10,9 @@ import Login from './components/Login'
 
 class App extends Component {
 
-  state = {}
+  state = {
+    locations: ""
+  }
 
   componentDidMount() {
     axios
@@ -20,7 +22,9 @@ class App extends Component {
           const locations = res.data.payload
           this.setState({ locations })
         }
-    })
+      }).catch(err => {
+        console.log(err)
+      })
   }
 
   render() {

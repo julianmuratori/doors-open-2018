@@ -13,7 +13,6 @@ class Nav extends Component {
     }
 
     menuMap = (i) => {
-        const { menuOptions } = this.state
         return (
             <div className="menu__link">
                 <a href={i}>

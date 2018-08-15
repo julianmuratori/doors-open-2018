@@ -1,5 +1,4 @@
 import React from 'react'
-import Background from '../assets/images/rcharris-ds.jpg'
 
 const Welcome = () => {
     const styles = { 
